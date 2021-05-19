@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  # Nodejs
+  template:
+    image: template
+    container_name: template
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      express_template_network:
+    restart: always
+    volumes:
+      - .:/usr/apps/express-template
+      - /usr/apps/express-template/node_modules
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+
+#Docker Networks
+networks:
+  express_template_network:
+    driver: bridge
+
+#Volumes ex using mongodb
+# volumes:
+#   mongodb_service:
+#     driver: local
+#   mongodb_service_config:
+#     driver: local

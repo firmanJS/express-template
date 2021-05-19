@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 11
+    },
+    "rules": {
+        "comma-dangle": 0,
+        "no-underscore-dangle": 0,
+        "no-param-reassign": 0,
+        "no-return-assign": 0,
+        "camelcase": "warn",
+        // "snakecase": true,
+        "semi": "off"
+    }
+}
