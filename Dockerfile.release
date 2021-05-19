@@ -1,0 +1,71 @@
+# # Build Stage 1
+# # This build created a staging docker image 
+# #
+# FROM node:14-alpine AS appbuild
+
+# LABEL Maintainer="Firman Abdul Hakim <fimzhakim@gmail.com>" \
+#       Description="Nodejs Expressjs"
+
+# WORKDIR /usr/src/app
+
+# COPY package.json ./
+
+# # COPY .babelrc ./
+# RUN yarn install --silent && yarn cache clean --all
+
+# COPY ./src ./src
+
+# RUN ["yarn", "dev"]
+
+# # Build Stage 2
+# # This build takes the production build from staging build
+# #
+# FROM node:14-alpine
+
+# WORKDIR /usr/src/app
+
+# COPY package.json ./
+
+# # COPY .babelrc ./
+# RUN npm install
+
+# COPY --from=appbuild /usr/src/app/dist ./dist
+
+# EXPOSE 4002
+
+# CMD yarn start
+
+# Build Stage 1
+# This build created a staging docker image 
+#
+FROM node:14-alpine AS appbuild
+
+LABEL Maintainer="Firman Abdul Hakim <fimzhakim@gmail.com>" \
+      Description="Nodejs Expressjs"
+
+WORKDIR /usr/apps
+
+COPY package.json ./
+
+# COPY .babelrc ./
+RUN yarn install
+
+#copy source
+COPY . .
+
+
+# Build Stage 2
+# This build takes the production build from staging build
+#
+FROM node:14-alpine
+
+WORKDIR /usr/apps
+
+COPY package.json ./
+
+# COPY .babelrc ./
+RUN yarn install
+
+COPY --from=appbuild /usr/apps/ ./
+
+RUN ["yarn", "dev"]
