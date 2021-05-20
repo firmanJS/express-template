@@ -12,6 +12,12 @@
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/pulls/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
+## How To use
+you must click the button use this template
+- **using template** - create name of your repository
+- **rename link readme** - change link repo default `github/firmanJS/express-template` to your repo
+- **codeclimate** - you must integrate repo to codeclimate don't forget set your repo is public for integrated and in github repo settings create secret key with name `CC_TEST_REPORTER_ID` and value from code climate `REPORTER ID` in [https://codeclimate.com/](https://codeclimate.com/)
+
 ## Core Stack
 - **Node.js** - [http://nodejs.org/](http://nodejs.org/)
 - **Express** - [http://expressjs.com/](http://expressjs.com/)
