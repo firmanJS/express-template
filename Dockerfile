@@ -1,6 +1,8 @@
-FROM node:14-alpine
+FROM node:16-alpine
 
-WORKDIR /usr/apps
+WORKDIR /usr/apps/express-template
+
+COPY . .
 
 COPY package*.json ./
 

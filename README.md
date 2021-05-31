@@ -82,12 +82,6 @@ TZ=Asia/Jakarta
 MONGO_SERVICE=# uri mongodb
 AUTH_SOURCE= #auth service
 SECRET_KEY= #jwt secret key here
-
-#Mongodb config
-MONGO_PORT=27017
-MONGO_INITDB_ROOT_USERNAME= #username
-MONGO_INITDB_ROOT_PASSWORD= #password
-MONGO_INITDB_DATABASE= #db name
 ```
 
 ### run with docker-compose
