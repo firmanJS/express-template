@@ -11,11 +11,14 @@ const convertDate = (result) => {
 }
 
 const validateData = (req, res, msg, message, result) => {
+  let messages
   if (result) {
-    msg.successResponse(res, message, result)
+    messages = msg.successResponse(res, message, result)
   } else {
-    msg.notFoundHandler(req, res)
+    messages = msg.notFoundHandler(req, res)
   }
+
+  return messages
 }
 
 module.exports = {

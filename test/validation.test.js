@@ -1,5 +1,8 @@
+/* eslint-disable global-require */
 const httpMock = require('node-mocks-http')
-const { convertDate, validateData } = require('../utils')
+const {
+  convertDate, validateData, resultValidation, countValidation
+} = require('../utils')
 
 let req
 let res
@@ -22,6 +25,15 @@ describe('utils custom testing ', () => {
   it('validate data', () => {
     // eslint-disable-next-line global-require
     const msg = require('../utils/exceptions')
-    validateData(req, res, msg, 'world', {})
+    validateData(req, res, msg, 'world', { data: 'a' })
+  })
+
+  it('validate resultt', () => {
+    resultValidation(req)
+  })
+
+  it('coun result', () => {
+    const msg = require('../utils/exceptions')
+    countValidation(req, res, [], msg)
   })
 })
