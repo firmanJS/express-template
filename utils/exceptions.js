@@ -20,15 +20,15 @@ const errorHandler = (error, res) => {
 const getResponse = (req, res, data) => res.status(200).json({
   message: 'Get data successfull',
   status: 'success',
-  data: data.result,
+  data: data?.result || [],
   _links: req.url,
   _meta: {
     currentPage: 1,
-    page: data.page,
-    limitPerPage: data.limit,
-    totalPages: data.countPerPage,
-    countPerPage: data.result.length,
-    countTotal: data.count
+    page: data?.page || 1,
+    limitPerPage: data?.limit || 10,
+    totalPages: data?.countPerPage || 1,
+    countPerPage: data.result?.length || 10,
+    countTotal: data?.count || 10
   }
 })
 

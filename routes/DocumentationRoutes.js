@@ -1,7 +1,8 @@
+/* eslint-disable global-require */
 const swaggerUi = require('swagger-ui-express')
 const express = require('express')
-const { API_PATH } = require('../helpers/constant')
-const { customResponse } = require('../helpers/exceptions')
+const { API_PATH } = require('../utils/constant')
+const { customResponse } = require('../utils/exceptions')
 const { index } = require('../static')
 
 const router = express.Router()

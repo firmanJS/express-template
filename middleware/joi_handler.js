@@ -1,4 +1,4 @@
-const { errorResponse } = require('../helpers/exceptions')
+const { errorResponse } = require('../utils/exceptions')
 
 // schema options
 const options = {

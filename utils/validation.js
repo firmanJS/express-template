@@ -2,18 +2,24 @@ const { validationResult } = require('express-validator')
 
 const resultValidation = (request) => {
   const errValidation = validationResult(request)
+  let result
   if (!errValidation.isEmpty()) {
-    return errValidation
+    result = errValidation
+  } else {
+    result = 0
   }
-  return 0
+  return result
 }
 
 const countValidation = (req, res, data, msg) => {
+  let message
   if (data.count > 0) {
-    return msg.getResponse(req, res, data)
+    message = msg.getResponse(req, res, data)
+  } else {
+    message = msg.notFoundResponse(res)
   }
 
-  return msg.notFoundResponse(res)
+  return message
 }
 
 module.exports = {
