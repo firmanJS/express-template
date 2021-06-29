@@ -13,6 +13,10 @@ describe('all utils testing', () => {
   })
 
   it('pagination helpers', () => {
-    paging(req)
+    const page = paging(req)
+    expect(page).toHaveProperty('search')
+    expect(page).toHaveProperty('sort')
+    expect(page).toHaveProperty('page')
+    expect(page).toHaveProperty('limit')
   })
 })
