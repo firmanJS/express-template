@@ -117,7 +117,7 @@ using swagger check in folder static
 |   └── models        * all models file
 |   └── migrations    * all migrations file
 |   └── seeders       * all seeders file
-├── helpers/          * all helper or middleware file here
+├── utils/          * all helper or middleware file here
 ├── middleware/       * all middleware file here, for check before next to api
 ├── routes/           * all file route here
 |   └── index.js      * register all route
