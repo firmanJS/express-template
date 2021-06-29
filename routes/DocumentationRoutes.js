@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const swaggerUi = require('swagger-ui-express')
 const express = require('express')
 const { API_PATH } = require('../utils/constant')
