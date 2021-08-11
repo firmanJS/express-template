@@ -1,4 +1,9 @@
+/* eslint-disable no-console */
+/* eslint-disable no-plusplus */
+const cluster = require('cluster')
+const os = require('os')
 const app = require('./app')
+
 require('dotenv').config()
 
 let server
@@ -32,7 +37,21 @@ process.on('SIGTERM', () => {
   }
 })
 
-app.listen(process.env.APP_PORT, () => {
-  // eslint-disable-next-line no-console
-  console.info(`express boillerplate app running in port ${process.env.APP_PORT}`)
-})
+if (cluster.isMaster) {
+  const cpuCore = os.cpus().length;
+  for (let i = 0; i < cpuCore; i++) {
+    cluster.fork();
+  }
+  cluster.on('online', (worker) => {
+    if (worker.isConnected()) console.info(`worker is active ${worker.process.pid}`);
+  });
+  cluster.on('exit', (worker) => {
+    if (worker.isDead()) console.info(`worker is dead ${worker.process.pid}`);
+    cluster.fork();
+  });
+} else {
+  app.listen(process.env.APP_PORT, () => {
+    // eslint-disable-next-line no-console
+    console.info(`express boillerplate app running in port ${process.env.APP_PORT}`)
+  })
+}
