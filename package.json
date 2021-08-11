@@ -4,13 +4,13 @@
   "description": "express boilerplate template restfullapi",
   "main": "index.js",
   "scripts": {
-    "prod": "pm2 index.js",
+    "prod": "pm2 start index.js",
     "dev": "nodemon --max-old-space-size=2048 --legacy-watch index.js",
     "test": "cross-env NODE_ENV=test jest -i --colors --verbose --detectOpenHandles --no-cache",
     "test:watch": "jest -i --watchAll",
     "test:coverage": "jest --coverage --detectOpenHandles",
     "lint": "eslint --fix --ext .js",
-    "test:load": "npx autocannon -c 100 -d 5 -p 10 localhost:4000/v1/users"
+    "test:load": "npx autocannon -c 10000 -d 5 -p 10 localhost:4000/v1/users"
   },
   "repository": {
     "type": "git",
