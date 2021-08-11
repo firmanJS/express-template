@@ -11,5 +11,9 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
+# Makefiles always use tabs for indentation
+[Makefile]
+indent_style = tab
+
 [*.yml]
 indent_size = 2
