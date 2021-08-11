@@ -18,6 +18,13 @@ you must click the button use this template
 - **rename link readme** - change link repo default `github/firmanJS/express-template` to your repo
 - **codeclimate** - you must integrate repo to codeclimate don't forget set your repo is public for integrated and in github repo settings create secret key with name `CC_TEST_REPORTER_ID` and value from code climate `REPORTER ID` in [https://codeclimate.com/](https://codeclimate.com/)
 
+or clone this repository via https : 
+```bash
+https://github.com/firmanJS/express-template.git
+```
+
+default branch using `commonjs` if you want version ecmascript you must checkout to branch `version/ecmascript`
+
 ## Core Stack
 - **Node.js** - [http://nodejs.org/](http://nodejs.org/)
 - **Express** - [http://expressjs.com/](http://expressjs.com/)
