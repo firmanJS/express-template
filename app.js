@@ -1,18 +1,21 @@
-const express = require('express')
+import express from 'express'
+
+import cors from 'cors'
+import compress from 'compression'
+import methodOverride from 'method-override'
+import helmet from 'helmet'
+import xss from 'xss-clean'
+import morgan from 'morgan'
+import Sentry from '@sentry/node'
+import Tracing from '@sentry/tracing'
+import dotenv from 'dotenv'
+import { notFoundHandler, errorHandler } from './utils/exceptions.js'
+import { MORGAN_FORMAT } from './utils/constant.js'
+import routing from './routes/index.js'
 
 const app = express()
-const cors = require('cors')
-const compress = require('compression')
-const methodOverride = require('method-override')
-const helmet = require('helmet')
-const xss = require('xss-clean')
-const morgan = require('morgan')
-const Sentry = require('@sentry/node')
-const Tracing = require('@sentry/tracing')
-const { notFoundHandler, errorHandler } = require('./utils/exceptions')
-const { MORGAN_FORMAT } = require('./utils/constant')
-const routing = require('./routes')
-require('dotenv').config()
+
+dotenv.config()
 
 app.use(compress()) // gzip compression
 app.use(methodOverride()) // lets you use HTTP verbs
@@ -55,4 +58,5 @@ app.use(xss()) // handler xss attack
 app.use(routing) // routing
 app.use(notFoundHandler) // 404 handler
 app.use(errorHandler) // error handlerr
-module.exports = app
+
+export default app

@@ -38,6 +38,6 @@ const index = {
   }
 }
 
-module.exports = {
+export {
   index
 }

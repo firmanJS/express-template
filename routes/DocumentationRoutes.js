@@ -1,9 +1,9 @@
 /* eslint-disable global-require */
-const swaggerUi = require('swagger-ui-express')
-const express = require('express')
-const { API_PATH } = require('../utils/constant')
-const { customResponse } = require('../utils/exceptions')
-const { index } = require('../static')
+import swaggerUi from 'swagger-ui-express'
+import express from 'express'
+import { API_PATH } from '../utils/constant.js'
+import { customResponse } from '../utils/exceptions.js'
+import { index } from '../static/index.js'
 
 const router = express.Router()
 
@@ -22,4 +22,5 @@ router.get('/', (req, res) => {
     documentation: `http://${req.get('host')}/api/v1/documentation`,
   })
 })
-module.exports = router
+
+export default router

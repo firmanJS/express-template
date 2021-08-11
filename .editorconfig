@@ -13,3 +13,11 @@ trim_trailing_whitespace = false
 
 [*.yml]
 indent_size = 2
+
+# Makefiles always use tabs for indentation
+[Makefile]
+indent_style = tab
+
+# Batch files use tabs for indentation
+[*.bat]
+indent_style = tab

@@ -22,5 +22,10 @@
         "camelcase": "warn",
         // "snakecase": true,
         "semi": "off"
-    }
+    },
+    "import/extensions": [
+        {
+            "ignorePackages": true
+        }
+    ]
 }

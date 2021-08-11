@@ -69,7 +69,7 @@ const errorResponse = (res, msg, code) => {
   res.status(code).json(message)
 }
 
-module.exports = {
+export {
   notFoundHandler,
   errorHandler,
   successResponse,

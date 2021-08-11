@@ -1,7 +1,9 @@
-const express = require('express')
+import express from 'express'
 
 const routing = express()
-const index = require('./DocumentationRoutes')
+
+import index from './DocumentationRoutes.js'
 
 routing.use(index)
-module.exports = routing
+
+export default routing
