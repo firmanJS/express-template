@@ -41,7 +41,9 @@ Sentry.init({
 });
 // RequestHandler creates a separate execution context using domains, so that every
 // transaction/span/breadcrumb is attached to its own Hub instance
-app.use(Sentry.Handlers.requestHandler());
+if (process.env.NODE_ENV !== 'test') {
+  app.use(Sentry.Handlers.requestHandler());
+}
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
 // the rest of your app
