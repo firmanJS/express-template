@@ -1,4 +1,6 @@
 docker-start:
+	docker-compose -f docker-compose.yml up 
+docker-build:
 	docker-compose up --build --remove-orphans --force-recreate
 docker-stop:
 	docker-compose stop

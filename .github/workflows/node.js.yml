@@ -40,6 +40,9 @@ jobs:
           echo TZ=${{ secrets.TZ }} >> .env
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
+          echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
+          echo SENTRY_TRACE_RATE=${{ secrets.SENTRY_TRACE_RATE }} >> .env
+          echo CLUSTER_MODE=${{ secrets.CLUSTER_MODE }} >> .env
           echo CC_TEST_REPORTER_ID=${{ secrets.CC_TEST_REPORTER_ID }} >> .env
 
   coverage:
