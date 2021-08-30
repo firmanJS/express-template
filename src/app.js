@@ -46,8 +46,6 @@ if (process.env.NODE_ENV !== 'test') {
 }
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
-// the rest of your app
-app.use(Sentry.Handlers.errorHandler());
 // remove favicon
 app.get('/favicon.ico', (_req, res) => {
   res.status(204)
@@ -57,4 +55,8 @@ app.use(xss()) // handler xss attack
 app.use(routing) // routing
 app.use(notFoundHandler) // 404 handler
 app.use(errorHandler) // error handlerr
+// the rest of your app
+
+app.use(Sentry.Handlers.errorHandler());
+
 module.exports = app

@@ -7,7 +7,7 @@ services:
     container_name: template
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/Dockerfile
     networks:
       express_template_network:
     restart: always
