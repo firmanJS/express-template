@@ -117,23 +117,24 @@ using swagger check in folder static
 ## Project Structure
 ```
 .
-├── api/              * all api file here
-├── config/           * all configuration file here
-|   └── db.js         * configuration database
-├── database/         * all models schema file here
-|   └── models        * all models file
-|   └── migrations    * all migrations file
-|   └── seeders       * all seeders file
-├── middleware/       * all middleware file here, for check before next to api
-├── routes/           * all file route here
-|   └── index.js      * register all route
-├── static/           * all configuration swagger
-|   └── path          * custom your path api
-|   └── schema        * custom schema body
-├── test/             * all test file here
-|   └── index.js      * test apps
-├── utils/            * all utils file here
-
+├── .github/            * all workflows github actions
+├── caprover/           * for deployment in caprover
+├── coverage/           * all output coverage
+├── docker/             * all dockerfile
+├── src/                * all source code in here
+  └── api/              * all api file here
+  └── config/           * all configuration file here
+  |  └── db.js         * configuration database
+  └── database/         * all models schema file here
+  |   └── models        * all models file
+  |   └── migrations    * all migrations file
+  |   └── seeders       * all seeders file
+  └── middleware/       * all middleware file here, for check before next to api
+  └── routes/           * all file route here
+  |   └── index.js      * register all route
+  └── test/             * all test file here
+  |   └── index.js      * test apps
+  └── utils/            * all utils file here
 ```
 
 ## Code Style Guides
