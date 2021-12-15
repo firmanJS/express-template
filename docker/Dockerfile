@@ -4,8 +4,8 @@ WORKDIR /usr/apps/express-template
 
 COPY ./src .
 
-COPY package.json yarn.lock ./
+COPY package.*json ./
 
-RUN yarn install --production=true && yarn cache clean --all
+RUN npm install --production
 
 CMD ["yarn", "dev"]
