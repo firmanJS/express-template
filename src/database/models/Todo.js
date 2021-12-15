@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
     },
+    description: {
+      type: DataTypes.TEXT,
+    },
     createdAt: { type: 'TIMESTAMPTZ', field: 'created_at' },
     updatedAt: { type: 'TIMESTAMPTZ', field: 'updated_at' },
   }, {

@@ -1,4 +1,5 @@
 const Sentry = require('@sentry/node')
+const { HTTP } = require('./constant')
 
 const notFoundHandler = (req, res) => {
   const msg = `Route : ${req.url} Not found.`
@@ -22,12 +23,33 @@ const removeFavicon = (req, res, next) => {
 const errorHandler = (error, res) => {
   if (!error.statusCode) error.statusCode = 500
   res.status(error.statusCode).json({
-    error: error.toString(),
     status: error.statusCode,
-    msg: error.toString()
+    message: error.toString(),
+    data: [],
   })
 
   Sentry.captureException(error.toString())
+}
+
+const syntaxError = (err, req, res, next) => {
+  const statusCode = err.status
+  const result = {
+    status: `syntax error ${err.type}`,
+    message: `${err.toString()}`,
+    data: `${err.toString()}`
+  }
+
+  if (process.env.NODE_ENV === 'development') {
+    console.error(result);
+  } else {
+    // sent to sentry
+  }
+
+  if (err instanceof SyntaxError) {
+    res.status(statusCode).send(result);
+  } else {
+    next();
+  }
 }
 
 const getResponse = (req, res, data) => res.status(200).json({
@@ -45,41 +67,45 @@ const getResponse = (req, res, data) => res.status(200).json({
   }
 })
 
-const successResponse = (res, msg, data) => res.status(200).json({
-  message: `${msg} data successfull`,
-  status: 'success',
-  data
-})
-
-const customResponse = (res, code, msg, data) => {
-  res.status(code).json({
-    message: msg,
+const successResponse = (res, message, status, data) => {
+  let code
+  switch (status) {
+    case 'success':
+      code = HTTP.OK
+      break
+    case 'created':
+      code = HTTP.CREATED
+      break
+    case 'validation':
+      code = HTTP.BAD_REQUEST
+      break
+    default:
+      code = HTTP.OK
+  }
+  return res.status(code).json({
+    message,
+    status,
     data
   })
 }
 
-const notFoundResponse = (res) => {
-  res.status(404).json({
-    message: 'Content not found',
-    status: 'empty',
-    data: []
-  })
-}
+const errorResponse = (res, error) => {
+  const manipulate = error.toString().split(':')
+  let message
 
-const errorResponse = (res, msg, code) => {
-  const message = {
-    message: `Error. ${msg}`,
+  if (manipulate[0] === 'SequelizeConnectionRefusedError') {
+    message = `${manipulate[0]}: Sequelize db is disconnected`
+  } else {
+    message = error.toString()
+  }
+
+  const response = {
+    message,
     status: 'something wrong',
     data: []
   }
-  if (msg.errmsg) {
-    message.message = msg.errmsg
-  } else if (msg.message) {
-    message.message = msg.message
-  } else if (msg.errors) {
-    message.message = msg.errors
-  }
-  res.status(code).json(message)
+
+  res.status(HTTP.BAD_REQUEST).json(response)
 }
 
 module.exports = {
@@ -87,8 +113,7 @@ module.exports = {
   errorHandler,
   successResponse,
   getResponse,
-  notFoundResponse,
   errorResponse,
-  customResponse,
-  removeFavicon
+  removeFavicon,
+  syntaxError
 }

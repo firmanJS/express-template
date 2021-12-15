@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 const httpMock = require('node-mocks-http')
 const {
-  convertDate, validateData, resultValidation, countValidation
+  convertDate,
 } = require('../utils')
 
 let req
@@ -20,20 +20,5 @@ describe('utils custom testing ', () => {
     const getDate = convertDate({})
     expect(convertDate({})).toHaveProperty('createdAt', getDate.createdAt)
     expect(convertDate({})).toHaveProperty('updatedAt', getDate.updatedAt)
-  })
-
-  it('validate data', () => {
-    // eslint-disable-next-line global-require
-    const msg = require('../utils/exceptions')
-    validateData(req, res, msg, 'world', { data: 'a' })
-  })
-
-  it('validate resultt', () => {
-    resultValidation(req)
-  })
-
-  it('coun result', () => {
-    const msg = require('../utils/exceptions')
-    countValidation(req, res, [], msg)
   })
 })
