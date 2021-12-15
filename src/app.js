@@ -9,7 +9,7 @@ const xss = require('xss-clean')
 const morgan = require('morgan')
 const { initSentry } = require('./config')
 const {
-  notFoundHandler, errorHandler, removeFavicon, MORGAN_FORMAT
+  notFoundHandler, errorHandler, removeFavicon, MORGAN_FORMAT, syntaxError
 } = require('./utils')
 const { routeV1 } = require('./routes')
 require('dotenv').config()
@@ -33,6 +33,7 @@ app.use(xss()) // handler xss attack
 app.use(routeV1) // routing
 app.use(notFoundHandler) // 404 handler
 app.use(errorHandler) // error handlerr
+app.use(syntaxError) // error handlerr syntax
 app.use(removeFavicon) // remove favicon request
 
 app.use(Sentry.Handlers.errorHandler());

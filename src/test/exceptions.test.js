@@ -1,7 +1,6 @@
 const httpMock = require('node-mocks-http')
 const {
-  notFoundHandler, errorHandler, getResponse, successResponse, customResponse,
-  errorResponse, notFoundResponse
+  notFoundHandler, errorHandler
 } = require('../utils')
 
 let req
@@ -22,25 +21,5 @@ describe('all utils testing ', () => {
 
   it('utils custom message error handler', () => {
     errorHandler('', res)
-  })
-
-  it('utils custom message for pagination', () => {
-    getResponse(req, res, [])
-  })
-
-  it('utils custom message for succes response', () => {
-    successResponse(res, [], [])
-  })
-
-  it('utils custom message for custom response', () => {
-    customResponse(res, 200, '', [])
-  })
-
-  it('utils custom message for error response', () => {
-    errorResponse(res, '', 500)
-  })
-
-  it('utils custom message for notfound response', () => {
-    notFoundResponse(res)
   })
 })

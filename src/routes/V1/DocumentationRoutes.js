@@ -1,16 +1,15 @@
 /* eslint-disable global-require */
 const swaggerUi = require('swagger-ui-express')
 const express = require('express')
-const { API_PATH } = require('../../utils/constant')
-const { customResponse } = require('../../utils/exceptions')
+const { successResponse } = require('../../utils')
 const { index } = require('../../static')
 
 const router = express.Router()
 
-router.use(`${API_PATH}/documentation`, swaggerUi.serve)
-router.get(`${API_PATH}/documentation`, swaggerUi.setup(index))
+router.use('/documentation', swaggerUi.serve)
+router.get('/documentation', swaggerUi.setup(index))
 router.get('/', (req, res) => {
-  customResponse(res, 200, 'Api running', {
+  successResponse(res, 'Api running', 'allive', {
     welcome: 'Welcome to Boilerplate API.',
     hostname: require('os').hostname(),
     uptime: require('os').uptime(),
