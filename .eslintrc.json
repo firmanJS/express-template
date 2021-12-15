@@ -21,6 +21,7 @@
         "no-return-assign": 0,
         "camelcase": "warn",
         // "snakecase": true,
+        "no-console": "off",
         "semi": "off"
     }
 }

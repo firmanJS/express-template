@@ -6,6 +6,6 @@ COPY ./src .
 
 COPY package.*json ./
 
-RUN npm install --production
+RUN npm install
 
-CMD ["yarn", "dev"]
+CMD ["npm", "run", "dev"]

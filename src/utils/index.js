@@ -1,8 +1,13 @@
-/* eslint-disable global-require */
+const constant = require('./constant')
+const custom = require('./custom')
+const exceptions = require('./exceptions')
+const pagination = require('./pagination')
+const validation = require('./validation')
+
 module.exports = {
-  ...require('./constant'),
-  ...require('./custom'),
-  ...require('./exceptions'),
-  ...require('./pagination'),
-  ...require('./validation')
+  ...constant,
+  ...custom,
+  ...exceptions,
+  ...pagination,
+  ...validation
 }
