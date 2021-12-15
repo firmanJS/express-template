@@ -1,7 +1,5 @@
-const express = require('express')
+const routeV1 = require('./V1')
 
-const routing = express()
-const index = require('./DocumentationRoutes')
-
-routing.use(index)
-module.exports = routing
+module.exports = {
+  routeV1
+}

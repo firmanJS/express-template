@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-plusplus */
 const cluster = require('cluster')
 const os = require('os')
 const app = require('./app')
@@ -36,7 +34,7 @@ process.on('SIGTERM', () => {
 
 if (process.env.CLUSTER_MODE === 'on' && cluster.isMaster) {
   const cpuCore = os.cpus().length;
-  for (let i = 0; i < cpuCore; i++) {
+  for (let i = 0; i < cpuCore; i += 1) {
     cluster.fork();
   }
   cluster.on('online', (worker) => {

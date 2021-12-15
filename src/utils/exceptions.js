@@ -1,3 +1,5 @@
+const Sentry = require('@sentry/node')
+
 const notFoundHandler = (req, res) => {
   const msg = `Route : ${req.url} Not found.`
   const err = new Error(msg)
@@ -8,6 +10,15 @@ const notFoundHandler = (req, res) => {
   })
 }
 
+const removeFavicon = (req, res, next) => {
+  if (req.url === '/favicon.ico') {
+    res.writeHead(200, { 'Content-Type': 'image/x-icon' });
+    res.end(/* icon content here */);
+  } else {
+    next();
+  }
+}
+
 const errorHandler = (error, res) => {
   if (!error.statusCode) error.statusCode = 500
   res.status(error.statusCode).json({
@@ -15,6 +26,8 @@ const errorHandler = (error, res) => {
     status: error.statusCode,
     msg: error.toString()
   })
+
+  Sentry.captureException(error.toString())
 }
 
 const getResponse = (req, res, data) => res.status(200).json({
@@ -76,5 +89,6 @@ module.exports = {
   getResponse,
   notFoundResponse,
   errorResponse,
-  customResponse
+  customResponse,
+  removeFavicon
 }
