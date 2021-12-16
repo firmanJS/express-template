@@ -54,6 +54,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
     "helmet": "^3.23.3",
+    "i18n": "^0.13.3",
     "method-override": "^3.0.0",
     "moment": "^2.27.0",
     "morgan": "^1.10.0",

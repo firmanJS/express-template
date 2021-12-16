@@ -1,5 +1,14 @@
-const Sentry = require('@sentry/node')
 const { HTTP } = require('./constant')
+const { captureException } = require('../config')
+
+// class CustomHandler extends Error {
+//   constructor(statusCode, message, status) {
+//     super();
+//     this.statusCode = statusCode
+//     this.message = message
+//     this.status = status
+//   }
+// }
 
 const notFoundHandler = (req, res) => {
   const msg = `Route : ${req.url} Not found.`
@@ -28,7 +37,7 @@ const errorHandler = (error, res) => {
     data: [],
   })
 
-  Sentry.captureException(error.toString())
+  captureException(error.toString())
 }
 
 const syntaxError = (err, req, res, next) => {
@@ -52,11 +61,11 @@ const syntaxError = (err, req, res, next) => {
   }
 }
 
-const getResponse = (req, res, data) => res.status(200).json({
+const paginationResponse = (req, res, data) => res.status(200).json({
   message: 'Get data successfull',
   status: 'success',
   data: data?.result || [],
-  _links: req.url,
+  _links: req.baseUrl,
   _meta: {
     currentPage: 1,
     page: data?.page || 1,
@@ -67,7 +76,7 @@ const getResponse = (req, res, data) => res.status(200).json({
   }
 })
 
-const successResponse = (res, message, status, data) => {
+const baseResponse = (res, message, status, data) => {
   let code
   switch (status) {
     case 'success':
@@ -79,10 +88,13 @@ const successResponse = (res, message, status, data) => {
     case 'validation':
       code = HTTP.BAD_REQUEST
       break
+    case 'not found':
+      code = HTTP.NOT_FOUND
+      break
     default:
       code = HTTP.OK
   }
-  return res.status(code).json({
+  res.status(code).json({
     message,
     status,
     data
@@ -101,7 +113,7 @@ const errorResponse = (res, error) => {
 
   const response = {
     message,
-    status: 'something wrong',
+    status: 'someting wrong',
     data: []
   }
 
@@ -109,10 +121,11 @@ const errorResponse = (res, error) => {
 }
 
 module.exports = {
+  // CustomHandler,
   notFoundHandler,
   errorHandler,
-  successResponse,
-  getResponse,
+  baseResponse,
+  paginationResponse,
   errorResponse,
   removeFavicon,
   syntaxError

@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 const swaggerUi = require('swagger-ui-express')
 const express = require('express')
-const { successResponse } = require('../../utils')
+const { baseResponse } = require('../../utils')
 const { index } = require('../../static')
 
 const router = express.Router()
@@ -9,7 +9,7 @@ const router = express.Router()
 router.use('/documentation', swaggerUi.serve)
 router.get('/documentation', swaggerUi.setup(index))
 router.get('/', (req, res) => {
-  successResponse(res, 'Api running', 'allive', {
+  baseResponse(res, 'Api running', 'allive', {
     welcome: 'Welcome to Boilerplate API.',
     hostname: require('os').hostname(),
     uptime: require('os').uptime(),
