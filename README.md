@@ -122,16 +122,25 @@ using swagger check in folder static
 ├── coverage/           * all output coverage
 ├── docker/             * all dockerfile
 ├── src/                * all source code in here
-  └── api/              * all api file here
   └── config/           * all configuration file here
   |  └── db.js         * configuration database
   └── database/         * all models schema file here
   |   └── models        * all models file
   |   └── migrations    * all migrations file
   |   └── seeders       * all seeders file
+  └── handlers/         * all file handlers here
+  |   └── index.js      * register all handler here
+  └── lang/             * setup language
+  |   └── index.js      * register all language here
   └── middleware/       * all middleware file here, for check before next to api
+  └── repository/       * all file repository for single db or multiple db
+  |   └── monggo        * register all monggo
+  |   └── mysql         * register all mysql
+  |   └── postgresql    * register all postgresql
   └── routes/           * all file route here
   |   └── index.js      * register all route
+  └── static/           * config for swagger
+  | └── swagger.json    * config swagger
   └── test/             * all test file here
   |   └── index.js      * test apps
   └── utils/            * all utils file here
@@ -141,7 +150,7 @@ using swagger check in folder static
 * Guideline:
   * Use camelCase for variable name, naming function, load module or other functions
   * Use UpperCase for Constant Variable
-  * Use PascalCase for class name, models, api, route, load module model
+  * Use PascalCase for class name, models
   * Use snake_case for file name as variable
   * Function name use Verb
   * Variable name use Noun

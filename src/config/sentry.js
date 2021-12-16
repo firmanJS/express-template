@@ -16,6 +16,9 @@ const initSentry = (app) => {
   return Sentry
 }
 
+const captureException = (err) => Sentry.captureException(err)
+
 module.exports = {
-  initSentry
+  initSentry,
+  captureException
 }

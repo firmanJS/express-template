@@ -1,5 +1,5 @@
 module.exports = {
-  API_PATH: '/api/v1',
+  API_V1: '/api/v1',
   SEARCH: {
     status: true
   },

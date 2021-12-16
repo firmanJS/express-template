@@ -1,5 +1,5 @@
 const { check } = require('express-validator')
-const { validateMiddleware } = require('../index')
+const { validateMiddleware } = require('../../../middleware')
 
 const postValidation = [
   check('name').isString().not().isEmpty()

@@ -7,6 +7,7 @@ const Sequelize = require('sequelize')
 const basename = path.basename(__filename)
 const env = process.env.NODE_ENV || 'development'
 const config = require('../../config/db')[env]
+const { lang } = require('../../lang')
 
 const db = {}
 
@@ -35,11 +36,24 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 sequelize.authenticate().then(() => {
-  db.connection = 'is alive connection'
+  db.connection = lang.__('db.connect')
 }).catch((err) => {
-  db.connection = err
+  db.connection = err.toString()
 })
 
-sequelize.sync({ alter: true })
+if (process.env.NODE_ENV === 'development') {
+  sequelize.sync({ alter: true }).then(() => {
+    console.info(lang.__('db.sync'))
+  }).catch((err) => {
+    const manipulate = err.toString().split(':')
+    let message
+    if (manipulate[0] === 'SequelizeConnectionRefusedError') {
+      message = `${manipulate[0]}: ${lang.__('db.dc')}`
+    } else {
+      message = err.toString()
+    }
+    console.info(lang.__('db.not_sync'), message)
+  })
+}
 
 module.exports = db
