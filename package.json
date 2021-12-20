@@ -6,7 +6,7 @@
   "scripts": {
     "prod": "pm2 start src/index.js",
     "dev": "nodemon --max-old-space-size=2048 --legacy-watch src/index.js",
-    "test": "cross-env NODE_ENV=test jest -i --colors --verbose --detectOpenHandles --no-cache",
+    "test": "jest --coverage",
     "test:watch": "jest -i --watchAll",
     "test:coverage": "jest --coverage --detectOpenHandles",
     "lint": "eslint --fix --ext .js",
