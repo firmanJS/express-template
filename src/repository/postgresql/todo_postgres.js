@@ -1,3 +1,4 @@
+const sequelize = require('sequelize')
 const { Todo } = require('../../database/models')
 
 const create = async (payload) => {
@@ -19,7 +20,26 @@ const read = async (where) => {
 const readByParam = async (where) => {
   const result = await Todo.findOne({
     where,
+    lock: sequelize.Transaction.LOCK.UPDATE,
   })
+
+  return result
+}
+
+const update = async (payload, where) => {
+  const result = await Todo.update(
+    payload, {
+      where,
+      returning: true,
+      plain: false
+    }
+  )
+
+  return result
+}
+
+const hardDelete = async (where) => {
+  const result = await Todo.destroy({ where })
 
   return result
 }
@@ -27,5 +47,7 @@ const readByParam = async (where) => {
 module.exports = {
   create,
   read,
-  readByParam
+  update,
+  readByParam,
+  hardDelete
 }
