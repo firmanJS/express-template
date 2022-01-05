@@ -8,7 +8,7 @@ const create = async (payload) => {
 
 const read = async (where) => {
   const result = await Todo.findAndCountAll({
-    where,
+    where, limit: 10, offset: 0,
   })
 
   return {
