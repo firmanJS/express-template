@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const config = {}
-const logging = process.env.NODE_ENV === 'production'
+const logging = (process.env.NODE_ENV === 'production' ? false : true)
 config.environment = process.env.NODE_ENV;
 config.sequelize = {}
 config.sequelize.username = process.env.DB_USER
