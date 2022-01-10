@@ -4,8 +4,8 @@
   "description": "express boilerplate template restfullapi",
   "main": "src/index.js",
   "scripts": {
-    "prod": "pm2 start src/index.js",
-    "prod-stop": "pm2 stop all",
+    "start": "pm2 start src/index.js",
+    "start-stop": "pm2 stop all",
     "dev": "nodemon --max-old-space-size=2048 --legacy-watch src/index.js",
     "test": "jest --coverage",
     "test:watch": "jest -i --watchAll",
