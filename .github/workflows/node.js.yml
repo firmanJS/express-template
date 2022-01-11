@@ -36,7 +36,7 @@ jobs:
       - name: Create env file
         run: |
           touch .env
-          echo APP_PORT=${{ secrets.APP_PORT }} >> .env
+          echo PORT=${{ secrets.PORT }} >> .env
           echo TZ=${{ secrets.TZ }} >> .env
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env

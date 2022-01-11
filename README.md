@@ -84,7 +84,7 @@ make docker-down
 ### fill in the copied environment earlier
 
 ```sh
-APP_PORT=2000
+PORT=2000
 TZ=Asia/Jakarta
 MONGO_SERVICE=# uri mongodb
 AUTH_SOURCE= #auth service

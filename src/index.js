@@ -45,7 +45,7 @@ if (process.env.CLUSTER_MODE === 'on' && cluster.isMaster) {
     cluster.fork();
   })
 } else {
-  app.listen(process.env.APP_PORT, () => {
-    console.info(`express boillerplate app running in port ${process.env.APP_PORT}`)
+  app.listen(process.env.PORT, () => {
+    console.info(`express boillerplate app running in port ${process.env.PORT}`)
   })
 }
