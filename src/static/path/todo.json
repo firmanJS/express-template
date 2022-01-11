@@ -1,8 +1,8 @@
 {
-    "/user": {
+    "/todo": {
       "get": {
         "tags": [
-          "Users"
+          "Todo"
         ],
         "security": [
           {
@@ -88,7 +88,7 @@
       },
       "post": {
         "tags": [
-          "Users"
+          "Todo"
         ],
         "security": [
           {
@@ -100,7 +100,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SchemaUser"
+                "$ref": "#/components/schemas/SchemaTodo"
               }
             }
           }
@@ -133,7 +133,7 @@
     "/user/{id}": {
       "get": {
         "tags": [
-          "Users"
+          "Todo"
         ],
         "security": [
           {
@@ -176,7 +176,7 @@
       },
       "put": {
         "tags": [
-          "Users"
+          "Todo"
         ],
         "security": [
           {
@@ -198,7 +198,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SchemaUser"
+                "$ref": "#/components/schemas/SchemaTodo"
               }
             }
           }
@@ -229,7 +229,7 @@
       },
       "delete": {
         "tags": [
-          "Users"
+          "Todo"
         ],
         "security": [
           {

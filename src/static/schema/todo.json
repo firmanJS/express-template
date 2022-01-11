@@ -1,14 +1,14 @@
 {
-    "SchemaUser": {
+    "SchemaTodo": {
         "type": "object",
         "properties": {
-            "username": {
+            "name": {
                 "type": "string"
             },
-            "email": {
-                "type": "string"
+            "total": {
+                "type": "number"
             },
-            "password": {
+            "description": {
                 "type": "string"
             }
         }

@@ -1,6 +1,6 @@
 const auth = require('./auth.json')
-const user = require('./user.json')
+const todo = require('./todo.json')
 
 module.exports = {
-  auth, user
+  auth, todo
 }

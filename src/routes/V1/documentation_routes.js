@@ -11,7 +11,7 @@ router.get('/documentation', swaggerUi.setup(index))
 router.get('/', (req, res) => {
   baseResponse(res, 'Api running', 'allive', {
     welcome: 'Welcome to Boilerplate API.',
-    hostname: require('os').hostname(),
+    // hostname: require('os').hostname(),
     uptime: require('os').uptime(),
     loadavg: require('os').loadavg(),
     totalmem: require('os').totalmem(),

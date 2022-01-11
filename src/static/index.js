@@ -25,16 +25,18 @@ const index = {
   openapi: '3.0.0',
   info,
   servers,
-  paths: { ...paths.auth, ...paths.user },
+  // paths: { ...paths.auth, ...paths.todo },
+  paths: { ...paths.todo },
   components: {
-    securitySchemes: {
-      bearerAuth: {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT'
-      }
-    },
-    schemas: { ...schema.auth, ...schema.user }
+    // securitySchemes: {
+    //   bearerAuth: {
+    //     type: 'http',
+    //     scheme: 'bearer',
+    //     bearerFormat: 'JWT'
+    //   }
+    // },
+    // schemas: { ...schema.auth, ...schema.todo }
+    schemas: { ...schema.todo }
   }
 }
 
